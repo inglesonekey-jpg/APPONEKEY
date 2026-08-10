@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Key — Una llave, un mundo de oportunidades</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+  :root{
+    --bg: #FBF6EA;
+    --surface: #F0E2BB;
+    --line: #E3D6B8;
+    --gold: #C9A227;
+    --gold-dark: #A8792A;
+    --text: #2E2313;
+    --text-secondary: #8A7A57;
+    --white: #FFFFFF;
+    --radius: 2px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family:'Work Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Cormorant', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  .label{
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-secondary);
+  }
+
+  .wrap{ max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- Header ---------- */
+  header{
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251,246,234,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding: 18px 32px; }
+  .brand{ display:flex; align-items:center; gap:9px; font-family:'Cormorant', serif; font-weight:600; font-size: 20px; }
+  .brand svg{ width:18px; height:18px; }
+  .navlinks{ display:flex; gap: 36px; font-size: 14px; color: var(--text-secondary); }
+  .navlinks a:hover{ color: var(--gold-dark); }
+  .nav-actions{ display:flex; align-items:center; gap: 18px; }
+  .link-login{ font-size: 14px; color: var(--text); border-bottom: 1px solid transparent; }
+  .link-login:hover{ border-color: var(--gold); color: var(--gold-dark); }
+
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--gold); color: var(--bg);
+    font-size: 13px; font-weight: 600; text-transform:uppercase; letter-spacing:0.06em;
+    padding: 12px 24px; border-radius: var(--radius); border: 1px solid var(--gold);
+    transition: background .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{ background: var(--gold-dark); border-color: var(--gold-dark); transform: translateY(-1px); }
+
+  .btn-secondary{
+    display:inline-flex; align-items:center;
+    font-size: 13px; text-transform:uppercase; letter-spacing:0.06em;
+    padding: 11px 22px; border-radius: var(--radius);
+    border: 1px solid var(--gold); color: var(--gold-dark);
+  }
+  .btn-secondary:hover{ background: var(--surface); }
+
+  .menu-toggle{ display:none; background:none; border:none; color:var(--text); font-size:22px; cursor:pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding: 108px 0 88px; }
+  .hero-grid{ display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items:center; }
+  .hero h1{
+    font-size: clamp(36px, 4.6vw, 56px);
+    line-height: 1.12;
+  }
+  .hero h1 .accent{ color: var(--gold-dark); font-style: italic; }
+  .hero p.lead{ margin-top: 22px; max-width: 480px; color: var(--text-secondary); font-size: 17px; }
+  .hero-actions{ margin-top: 36px; display:flex; gap:14px; flex-wrap:wrap; }
+
+  .hero-panel{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 36px;
+  }
+  .hero-panel .label{ margin-bottom: 18px; }
+  .phrase-row{
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+  }
+  .phrase-row:last-child{ border-bottom:none; }
+  .phrase-row .before{ color: var(--text-secondary); font-size: 14.5px; }
+  .phrase-row .after{ font-family:'Cormorant', serif; font-size: 19px; font-weight:600; color: var(--gold-dark); }
+
+  .stat-row{ display:flex; gap: 40px; margin-top: 64px; flex-wrap:wrap; }
+  .stat-row .stat{ font-family:'Cormorant', serif; font-size: 30px; color: var(--text); font-weight:600; }
+  .stat-row .stat span{ display:block; font-family:'Work Sans', sans-serif; font-size:13px; color: var(--text-secondary); font-weight:400; margin-top:4px; }
+
+  /* ---------- Sections ---------- */
+  section{ padding: 84px 0; border-top: 1px solid var(--line); }
+  .section-head{ max-width: 600px; margin-bottom: 52px; }
+  .section-head h2{ font-size: clamp(28px, 3.2vw, 36px); margin-top: 12px; }
+  .section-head p{ color: var(--text-secondary); margin-top: 14px; }
+
+  .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+  }
+  .card .label{ margin-bottom: 16px; }
+  .card h3{ font-size: 20px; font-weight:600; margin-bottom: 10px; }
+  .card p{ color: var(--text-secondary); font-size: 14.5px; }
+
+  .card.locked{ opacity: 0.5; position:relative; }
+  .card.locked::after{
+    content:"🔒"; position:absolute; top:22px; right:22px; font-size: 14px; opacity:.7;
+  }
+
+  /* ---------- Login block ---------- */
+  .login-section{ background: var(--surface); }
+  .login-panel{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items:center; }
+  .login-copy h2{ font-size: clamp(26px,3vw,32px); margin-top: 10px; }
+  .login-copy p{ color: var(--text-secondary); max-width: 420px; margin-top: 14px; }
+
+  .login-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 38px 34px;
+  }
+  .login-card h3{ font-size: 20px; margin-bottom: 6px; font-weight:600; }
+  .login-card .sub{ color: var(--text-secondary); font-size: 13.5px; margin-bottom: 26px; }
+  .field label{
+    display:block; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-secondary); margin-bottom: 8px;
+  }
+  .field input{
+    width:100%; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 13px 14px; color: var(--text); font-family:'Work Sans', sans-serif; font-size: 15px;
+  }
+  .field input:focus{ outline: none; border-color: var(--gold); }
+  .login-card button{
+    width:100%; margin-top: 20px; padding: 13px;
+    background: var(--gold); color: var(--bg); font-weight:600; font-size: 13px;
+    text-transform:uppercase; letter-spacing:0.06em;
+    border:none; border-radius: var(--radius); cursor:pointer; transition: background .2s ease;
+  }
+  .login-card button:hover{ background: var(--gold-dark); }
+  .login-hint{ font-size: 12.5px; color: var(--text-secondary); margin-top: 16px; text-align:center; }
+  .login-hint a{ color: var(--gold-dark); }
+
+  /* ---------- Footer ---------- */
+  footer{ border-top: 1px solid var(--line); padding: 44px 0; }
+  .footer-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 18px; }
+  .footer-row .brand{ font-size: 15px; }
+  .footer-links{ display:flex; gap: 26px; font-size: 13.5px; color: var(--text-secondary); }
+  .footer-links a:hover{ color: var(--gold-dark); }
+
+  @media (max-width: 860px){
+    .navlinks{ display:none; }
+    .menu-toggle{ display:block; }
+    .hero-grid{ grid-template-columns: 1fr; }
+    .login-panel{ grid-template-columns: 1fr; gap: 36px; }
+    .grid-3{ grid-template-columns: 1fr; }
+    .stat-row{ gap: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .btn-primary{ transition:none; }
+  }
+
+  /* ---------- WhatsApp flotante ---------- */
+  .wa-float{
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    z-index: 60;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow: 0 6px 20px rgba(46,35,19,0.22);
+    transition: background .2s ease, transform .2s ease;
+  }
+  .wa-float:hover{ background: var(--gold-dark); transform: translateY(-2px); }
+  .wa-float svg{ width: 26px; height: 26px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="5" stroke="#A8792A" stroke-width="1.5"/>
+        <path d="M11.5 11.3L19.5 19.3M19.5 19.3L17.2 21.6M19.5 19.3L16.6 16.5" stroke="#A8792A" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      One Key
+    </div>
+    <nav class="navlinks">
+      <a href="#metodo">Método</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#para-quien">¿Para quién es?</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#login" class="link-login">¿Ya sos alumno/a?</a>
+      <a href="#login" class="btn-primary">Quiero aprender inglés</a>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="label">Clases de inglés en grupos chicos</div>
+      <h1 style="margin-top:14px">Hablá inglés <span class="accent">con confianza</span>, no de memoria.</h1>
+      <p class="lead">Aprendé con situaciones reales — de la oficina al viaje — acompañada por tu profesora, unidad por unidad, a tu ritmo.</p>
+      <div class="hero-actions">
+        <a href="#login" class="btn-primary">Quiero aprender inglés</a>
+        <a href="#metodo" class="btn-secondary">Conocer el método</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat">2–8<span>alumnos por grupo</span></div>
+        <div class="stat">5<span>unidades del track Oficina</span></div>
+        <div class="stat">100%<span>situaciones reales</span></div>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="label">Así suena el progreso</div>
+      <div class="phrase-row">
+        <span class="before">"Sorry, I no speak good..."</span>
+        <span class="after">"Let me walk you through it."</span>
+      </div>
+      <div class="phrase-row">
+        <span class="before">"How I say... reunión?"</span>
+        <span class="after">"Can we schedule a follow-up?"</span>
+      </div>
+      <div class="phrase-row">
+        <span class="before">Miedo a hablar</span>
+        <span class="after">Confianza para responder</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">Filosofía</div>
+      <h2>No memorizás listas. Entendés el idioma.</h2>
+      <p>Cada unidad combina clase en vivo, práctica y materiales — pensada para que entiendas el porqué, no solo el qué.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="label">Clase</div>
+        <h3>Grabación de la clase</h3>
+        <p>Volvé a ver tu clase en video cuando quieras repasar un concepto.</p>
+      </div>
+      <div class="card">
+        <div class="label">Material</div>
+        <h3>Vocabulario y gramática</h3>
+        <p>Todo organizado por unidad, sin buscar entre carpetas sueltas.</p>
+      </div>
+      <div class="card locked">
+        <div class="label">Práctica</div>
+        <h3>Writing, speaking, role play</h3>
+        <p>Se desbloquea cuando tu grupo llega a esta unidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="login" class="login-section">
+  <div class="wrap">
+    <div class="login-panel">
+      <div class="login-copy">
+        <div class="label">Acceso alumnos</div>
+        <h2>¿Ya sos alumno/a de One Key?</h2>
+        <p>Ingresá con el email que usaste al inscribirte para ver tu progreso, tu unidad actual y lo que sigue.</p>
+      </div>
+      <div class="login-card">
+        <h3>Ingresá a tu portal</h3>
+        <div class="sub">Sin contraseña — validamos por email.</div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="tu.email@ejemplo.com">
+        </div>
+        <button type="button">Entrar</button>
+        <div class="login-hint">¿Todavía no sos alumna/o? <a href="#">Quiero aprender inglés →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+          <circle cx="8" cy="8" r="5" stroke="#A8792A" stroke-width="1.5"/>
+          <path d="M11.5 11.3L19.5 19.3M19.5 19.3L17.2 21.6M19.5 19.3L16.6 16.5" stroke="#A8792A" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        One Key
+      </div>
+      <div class="footer-links">
+        <a href="#metodo">Método</a>
+        <a href="#login">Ingresar</a>
+        <a href="https://www.instagram.com/ingles.o.k" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:inglesonekey@gmail.com">inglesonekey@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón de WhatsApp: reemplazá TU_NUMERO por el número real con código de país, sin +, espacios ni guiones (ej: 5491122334455) -->
+<a class="wa-float" href="https://wa.me/TU_NUMERO" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.1-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="#FBF6EA"/>
+    <path d="M17.2 14.3c-.28-.14-1.65-.81-1.9-.9-.26-.1-.44-.14-.63.14-.19.28-.72.9-.88 1.08-.16.19-.32.21-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.5-.07-.14-.63-1.52-.87-2.08-.23-.55-.46-.47-.63-.48-.16-.01-.35-.01-.54-.01s-.5.07-.76.35c-.26.28-1 .98-1 2.38s1.02 2.76 1.16 2.95c.14.19 2.01 3.06 4.86 4.29.68.29 1.21.47 1.62.6.68.22 1.3.19 1.79.11.55-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.26-.19-.54-.33z" fill="#2E2313"/>
+  </svg>
+</a>
+</body>
+</html>
