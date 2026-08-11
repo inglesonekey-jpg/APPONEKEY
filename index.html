@@ -281,6 +281,52 @@
   }
   .path-meta strong{ color: var(--text); font-weight:600; }
 
+  /* ---------- Cursos ---------- */
+  .grid-cursos{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 860px){ .grid-cursos{ grid-template-columns: 1fr; } }
+  .curso-card{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 24px;
+  }
+  .curso-card .num{
+    font-family:'Cormorant', serif;
+    font-size: 13px;
+    color: var(--gold-dark);
+    display:block;
+    margin-bottom: 14px;
+  }
+  .curso-card h3{ font-size: 19px; font-weight:600; margin-bottom: 8px; }
+  .curso-card .tag{ font-size: 13.5px; color: var(--gold-dark); font-weight:500; margin-bottom: 8px; }
+  .curso-card p{ color: var(--text-secondary); font-size: 14px; }
+  .curso-card:target{
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-soft, rgba(201,162,39,0.18));
+  }
+
+  .cursos-cta{
+    margin-top: 44px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 32px;
+    text-align:center;
+  }
+  .cursos-cta p{ color: var(--text-secondary); margin: 6px 0 18px; font-size: 14.5px; }
+  .cursos-cta h3{ font-size: 21px; font-weight:600; }
+  .btn-whatsapp{
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--gold); color: var(--bg);
+    font-size: 13px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em;
+    padding: 12px 24px; border-radius: var(--radius); border: 1px solid var(--gold);
+  }
+  .btn-whatsapp:hover{ background: var(--gold-dark); border-color: var(--gold-dark); }
+
   /* ---------- Sections ---------- */
   section{ padding: 84px 0; border-top: 1px solid var(--line); }
   .section-head{ max-width: 600px; margin-bottom: 52px; }
@@ -489,6 +535,66 @@
   </div>
 </section>
 
+<section id="cursos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">Cursos</div>
+      <h2>Elegí el curso que mejor se adapta a vos</h2>
+      <p>Aprendé inglés con situaciones reales, práctica y acompañamiento, avanzando a tu ritmo, tu nivel y tus objetivos.</p>
+    </div>
+    <div class="grid-cursos">
+      <div class="curso-card" id="curso-desde-cero">
+        <span class="num">01</span>
+        <h3>Inglés desde cero</h3>
+        <div class="tag">Sin conocimientos previos</div>
+        <p>Empezá desde el principio. Aprendé las bases del inglés paso a paso y construí una base sólida para comunicarte con confianza.</p>
+      </div>
+      <div class="curso-card" id="curso-general">
+        <span class="num">02</span>
+        <h3>Inglés General</h3>
+        <div class="tag">Para la vida real</div>
+        <p>Trabajá conversación, vocabulario, gramática y comprensión a partir de situaciones cotidianas, viajes, trabajo y temas de tu interés.</p>
+      </div>
+      <div class="curso-card" id="curso-work">
+        <span class="num">03</span>
+        <h3>English for Work</h3>
+        <div class="tag">Ámbito laboral</div>
+        <p>Aprendé a comunicarte con más seguridad en reuniones, emails, llamadas, presentaciones y situaciones profesionales reales.</p>
+      </div>
+      <div class="curso-card" id="curso-travel">
+        <span class="num">04</span>
+        <h3>English for Travel</h3>
+        <div class="tag">Para viajar sin depender de un traductor</div>
+        <p>Practicá las situaciones que realmente vas a encontrar: aeropuerto, hotel, restaurantes, compras, direcciones y conversaciones.</p>
+      </div>
+      <div class="curso-card" id="curso-maritime">
+        <span class="num">05</span>
+        <h3>Maritime English</h3>
+        <div class="tag">Ámbito marítimo</div>
+        <p>Desarrollá vocabulario y comunicación profesional para situaciones a bordo, operaciones, rutinas, emergencias y comunicación en el entorno marítimo.</p>
+      </div>
+      <div class="curso-card" id="curso-specific-jobs">
+        <span class="num">06</span>
+        <h3>English for Specific Jobs</h3>
+        <div class="tag">Adaptado a tu profesión</div>
+        <p>Aprendé el vocabulario y las expresiones que necesitás para desenvolverte en situaciones concretas de tu trabajo.</p>
+      </div>
+      <div class="curso-card" id="curso-personalizado">
+        <span class="num">07</span>
+        <h3>Inglés personalizado</h3>
+        <div class="tag">Un recorrido pensado para vos</div>
+        <p>Trabajamos a partir de tu nivel, tus objetivos, tus intereses y tu progreso para que aprendas exactamente lo que necesitás.</p>
+      </div>
+    </div>
+
+    <div class="cursos-cta">
+      <h3>¿Te interesa alguno en especial?</h3>
+      <p>Contame qué estás buscando y te ayudo a elegir el curso justo para vos.</p>
+      <a href="https://wa.me/TU_NUMERO" target="_blank" rel="noopener" class="btn-whatsapp">Escribime por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
 <section id="para-quien">
   <div class="wrap">
     <div class="section-head">
@@ -515,7 +621,7 @@
           <li>Construir tus primeras conversaciones</li>
         </ul>
         <div class="path-meta"><strong>Modalidad:</strong> clases + clases grabadas + actividades + práctica · <strong>Nivel:</strong> Inicial / A1</div>
-        <a href="#login" class="btn-secondary">Quiero empezar</a>
+        <a href="#curso-desde-cero" class="btn-secondary">Quiero empezar</a>
       </div>
     </details>
 
@@ -537,7 +643,7 @@
           <li>Seguridad para expresarte</li>
         </ul>
         <div class="path-meta"><strong>Ideal para:</strong> personas con conocimientos previos que quieren avanzar</div>
-        <a href="#login" class="btn-secondary">Quiero mejorar mi inglés</a>
+        <a href="#curso-personalizado" class="btn-secondary">Quiero mejorar mi inglés</a>
       </div>
     </details>
 
@@ -560,7 +666,7 @@
           <li>Comunicarte con clientes y compañeros</li>
         </ul>
         <div class="path-meta"><strong>Ideal para:</strong> profesionales, empleados y emprendedores</div>
-        <a href="#login" class="btn-secondary">Quiero inglés para trabajar</a>
+        <a href="#curso-work" class="btn-secondary">Quiero inglés para trabajar</a>
       </div>
     </details>
 
@@ -582,7 +688,7 @@
           <li>Resolver situaciones inesperadas</li>
         </ul>
         <div class="path-meta"><strong>Ideal para:</strong> quienes tienen un viaje próximo o quieren estar preparados</div>
-        <a href="#login" class="btn-secondary">Quiero prepararme para viajar</a>
+        <a href="#curso-travel" class="btn-secondary">Quiero prepararme para viajar</a>
       </div>
     </details>
 
@@ -605,7 +711,7 @@
           <li>Comunicación laboral</li>
         </ul>
         <div class="path-meta"><strong>Ideal para:</strong> profesionales y trabajadores que necesitan inglés específico</div>
-        <a href="#login" class="btn-secondary">Ver cursos profesionales</a>
+        <a href="#curso-specific-jobs" class="btn-secondary">Ver cursos profesionales</a>
       </div>
     </details>
 
@@ -627,7 +733,7 @@
           <li>Actividades dinámicas</li>
         </ul>
         <div class="path-meta"><strong>Ideal para:</strong> alumnos con base que quieren hablar más y ganar confianza</div>
-        <a href="#login" class="btn-secondary">Quiero practicar</a>
+        <a href="#curso-general" class="btn-secondary">Quiero practicar</a>
       </div>
     </details>
   </div>
