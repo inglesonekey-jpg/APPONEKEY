@@ -131,6 +131,41 @@
     padding: 7px 14px;
     border-radius: 20px;
   }
+
+  .group-row{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 34px;
+    max-width: 640px;
+    margin-left:auto; margin-right:auto;
+  }
+  @media (max-width: 700px){ .group-row{ grid-template-columns: 1fr; } }
+  .tag-group{
+    display:block;
+    border: 1px solid var(--line);
+    background: var(--white);
+    border-radius: 6px;
+    padding: 16px 18px;
+    text-align: left;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .tag-group:hover{ border-color: var(--gold); transform: translateY(-2px); }
+  .tag-group .group-label{
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-bottom: 6px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .tag-group .group-label .arrow{ color: var(--gold); }
+  .tag-group .group-items{
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
   .hero-closing{
     margin-top: 30px;
     font-family:'Cormorant', serif;
@@ -186,6 +221,10 @@
     transition: transform .2s ease;
   }
   .faq-item[open] summary .icon{ transform: rotate(45deg); }
+  .faq-item:target{
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-soft);
+  }
   .faq-item .faq-answer{
     padding: 0 4px 22px;
     color: var(--text-secondary);
@@ -197,6 +236,26 @@
     font-size: 13px;
     color: var(--text-secondary);
   }
+  .faq-feature-list{
+    list-style:none;
+    margin: 14px 0 0;
+    padding: 0;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 20px;
+  }
+  @media (max-width: 600px){ .faq-feature-list{ grid-template-columns: 1fr; } }
+  .faq-feature-list li{
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding-left: 16px;
+    position:relative;
+  }
+  .faq-feature-list li::before{
+    content:"—";
+    position:absolute; left:0; color: var(--gold-dark);
+  }
+  .faq-feature-list strong{ color: var(--text); font-weight:600; }
 
   /* ---------- Para quién es (cursos) ---------- */
   .keyword-row{
@@ -252,6 +311,10 @@
     transition: transform .2s ease;
   }
   .path-item[open] summary .chev{ transform: rotate(90deg); }
+  .path-item:target{
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-soft, rgba(201,162,39,0.18));
+  }
   .path-body{
     padding: 0 22px 26px 68px;
   }
@@ -308,6 +371,14 @@
     border-color: var(--gold);
     box-shadow: 0 0 0 3px var(--gold-soft, rgba(201,162,39,0.18));
   }
+  .curso-back-link{
+    display:inline-block;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--gold-dark);
+    border-bottom: 1px solid var(--gold);
+  }
+  .curso-back-link:hover{ color: var(--text); border-color: var(--text); }
 
   .cursos-cta{
     margin-top: 44px;
@@ -451,14 +522,19 @@
     <h1 style="margin-top:14px">Aprendé inglés <span class="accent">a tu manera</span></h1>
     <div class="hero-subline">Entendé. Practicá. Avanzá.</div>
     <p class="lead">Aprendé según tu nivel, tus intereses y tu ritmo, con clases, actividades y práctica que podés realizar cuando quieras.</p>
-    <div class="tag-row">
-      <span class="tag">Tu nivel</span>
-      <span class="tag">Tus intereses</span>
-      <span class="tag">Tu progreso</span>
-      <span class="tag">Clases grabadas</span>
-      <span class="tag">Actividades</span>
-      <span class="tag">Práctica</span>
-      <span class="tag">Confianza</span>
+    <div class="group-row">
+      <a href="#para-quien" class="tag-group">
+        <div class="group-label">Personalizado <span class="arrow">›</span></div>
+        <div class="group-items">Tu nivel · Tus intereses · Tu ritmo</div>
+      </a>
+      <a href="#faq-cursada" class="tag-group">
+        <div class="group-label">Tu progreso <span class="arrow">›</span></div>
+        <div class="group-items">Tu agenda · Seguimiento · Tu progreso</div>
+      </a>
+      <a href="#metodo" class="tag-group">
+        <div class="group-label">Tu aprendizaje <span class="arrow">›</span></div>
+        <div class="group-items">Clases grabadas · Actividades · Práctica · Confianza</div>
+      </a>
     </div>
     <div class="hero-actions">
       <a href="#login" class="btn-primary">Quiero aprender inglés</a>
@@ -548,42 +624,49 @@
         <h3>Inglés desde cero</h3>
         <div class="tag">Sin conocimientos previos</div>
         <p>Empezá desde el principio. Aprendé las bases del inglés paso a paso y construí una base sólida para comunicarte con confianza.</p>
+        <a href="#path-desde-cero" class="curso-back-link">¿Es para vos? Ver "Inglés desde cero" →</a>
       </div>
       <div class="curso-card" id="curso-general">
         <span class="num">02</span>
         <h3>Inglés General</h3>
         <div class="tag">Para la vida real</div>
         <p>Trabajá conversación, vocabulario, gramática y comprensión a partir de situaciones cotidianas, viajes, trabajo y temas de tu interés.</p>
+        <a href="#path-conversacion" class="curso-back-link">¿Es para vos? Ver "Conversación en inglés" →</a>
       </div>
       <div class="curso-card" id="curso-work">
         <span class="num">03</span>
         <h3>English for Work</h3>
         <div class="tag">Ámbito laboral</div>
         <p>Aprendé a comunicarte con más seguridad en reuniones, emails, llamadas, presentaciones y situaciones profesionales reales.</p>
+        <a href="#path-trabajo" class="curso-back-link">¿Es para vos? Ver "Inglés para el trabajo" →</a>
       </div>
       <div class="curso-card" id="curso-travel">
         <span class="num">04</span>
         <h3>English for Travel</h3>
         <div class="tag">Para viajar sin depender de un traductor</div>
         <p>Practicá las situaciones que realmente vas a encontrar: aeropuerto, hotel, restaurantes, compras, direcciones y conversaciones.</p>
+        <a href="#path-viajar" class="curso-back-link">¿Es para vos? Ver "Inglés para viajar" →</a>
       </div>
       <div class="curso-card" id="curso-maritime">
         <span class="num">05</span>
         <h3>Maritime English</h3>
         <div class="tag">Ámbito marítimo</div>
         <p>Desarrollá vocabulario y comunicación profesional para situaciones a bordo, operaciones, rutinas, emergencias y comunicación en el entorno marítimo.</p>
+        <a href="#path-tecnico" class="curso-back-link">¿Es para vos? Ver "Inglés técnico y profesional" →</a>
       </div>
       <div class="curso-card" id="curso-specific-jobs">
         <span class="num">06</span>
         <h3>English for Specific Jobs</h3>
         <div class="tag">Adaptado a tu profesión</div>
         <p>Aprendé el vocabulario y las expresiones que necesitás para desenvolverte en situaciones concretas de tu trabajo.</p>
+        <a href="#path-tecnico" class="curso-back-link">¿Es para vos? Ver "Inglés técnico y profesional" →</a>
       </div>
       <div class="curso-card" id="curso-personalizado">
         <span class="num">07</span>
         <h3>Inglés personalizado</h3>
         <div class="tag">Un recorrido pensado para vos</div>
         <p>Trabajamos a partir de tu nivel, tus objetivos, tus intereses y tu progreso para que aprendas exactamente lo que necesitás.</p>
+        <a href="#path-mejorar" class="curso-back-link">¿Es para vos? Ver "Mejorar y hablar" →</a>
       </div>
     </div>
 
@@ -603,7 +686,7 @@
       <p>Elegí la palabra clave que más te representa y mirá cómo funciona ese camino.</p>
     </div>
 
-    <details class="path-item">
+    <details class="path-item" id="path-desde-cero">
       <summary>
         <span class="num">01</span>
         Inglés desde cero
@@ -625,7 +708,7 @@
       </div>
     </details>
 
-    <details class="path-item">
+    <details class="path-item" id="path-mejorar">
       <summary>
         <span class="num">02</span>
         Mejorar y hablar
@@ -647,7 +730,7 @@
       </div>
     </details>
 
-    <details class="path-item">
+    <details class="path-item" id="path-trabajo">
       <summary>
         <span class="num">03</span>
         Inglés para el trabajo
@@ -670,7 +753,7 @@
       </div>
     </details>
 
-    <details class="path-item">
+    <details class="path-item" id="path-viajar">
       <summary>
         <span class="num">04</span>
         Inglés para viajar
@@ -692,7 +775,7 @@
       </div>
     </details>
 
-    <details class="path-item">
+    <details class="path-item" id="path-tecnico">
       <summary>
         <span class="num">05</span>
         Inglés técnico y profesional
@@ -715,7 +798,7 @@
       </div>
     </details>
 
-    <details class="path-item">
+    <details class="path-item" id="path-conversacion">
       <summary>
         <span class="num">06</span>
         Conversación en inglés
@@ -753,67 +836,71 @@
       </details>
       <details class="faq-item">
         <summary>¿Son clases de conversación?<span class="icon">+</span></summary>
-        <div class="faq-answer">Sí. El objetivo principal es hablar y practicar inglés en situaciones reales, incorporando vocabulario y gramática de manera aplicada.</div>
+        <div class="faq-answer">La práctica oral es una parte fundamental de las clases. Trabajamos para que puedas hablar y comunicarte en situaciones reales, incorporando vocabulario y gramática de manera aplicada.</div>
       </details>
       <details class="faq-item">
         <summary>¿Las clases son grupales?<span class="icon">+</span></summary>
-        <div class="faq-answer">Sí. Son grupos reducidos de 4 a 6 alumnos, para que todos tengan la posibilidad de participar.</div>
+        <div class="faq-answer">Sí. Trabajamos con grupos reducidos de 4 a 8 alumnos, para que todos tengan la posibilidad de participar y recibir acompañamiento. Si preferís una clase individual, también podés consultarnos por más información.</div>
       </details>
-      <details class="faq-item">
-        <summary>¿Cuánto dura cada clase?<span class="icon">+</span></summary>
-        <div class="faq-answer">Cada clase dura 1 hora y media y se realiza una vez por semana.</div>
+      <details class="faq-item" id="faq-cursada">
+        <summary>¿Cómo es la cursada y qué incluye?<span class="icon">+</span></summary>
+        <div class="faq-answer">
+          La cursada se adapta a vos. Desde la app tenés acceso a tu agenda, donde coordinás tus clases con tu profesora según tu disponibilidad.
+          <br><br>
+          Además, contás con seguimiento de tu cursada y tu progreso. Las clases quedan grabadas para que puedas volver a verlas y repasarlas las veces que quieras.
+          <br><br>
+          También tenés acceso a los materiales y actividades de cada unidad, todo organizado en un mismo lugar.
+          <ul class="faq-feature-list">
+            <li><strong>Agenda:</strong> coordinás tus clases según tu disponibilidad</li>
+            <li><strong>Seguimiento:</strong> ves tu avance y progreso</li>
+            <li><strong>Clases grabadas:</strong> las repasás las veces que quieras</li>
+            <li><strong>Materiales y actividades:</strong> todo organizado en la app</li>
+          </ul>
+        </div>
       </details>
       <details class="faq-item">
         <summary>¿Qué pasa si no puedo conectarme a una clase?<span class="icon">+</span></summary>
-        <div class="faq-answer">¡No te preocupes! Las clases quedan grabadas para que puedas verlas cuando quieras. Así podés mantenerte al día aunque no hayas podido conectarte.</div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Puedo ver mi progreso?<span class="icon">+</span></summary>
-        <div class="faq-answer">Sí. Vas a poder seguir tu avance y ver lo que vas aprendiendo a lo largo del curso.</div>
+        <div class="faq-answer">No te preocupes. Las clases quedan grabadas y disponibles en la app para que puedas verlas cuando quieras y continuar con tu cursada sin perder el contenido.</div>
       </details>
       <details class="faq-item">
         <summary>¿Puedo hacer las actividades en otro momento?<span class="icon">+</span></summary>
-        <div class="faq-answer">Sí. Las actividades quedan disponibles para que puedas realizarlas cuando tengas tiempo y avanzar a tu propio ritmo.</div>
+        <div class="faq-answer">Sí. Las actividades quedan disponibles en la app para que puedas realizarlas cuando tengas tiempo y avanzar a tu propio ritmo.</div>
       </details>
       <details class="faq-item">
-        <summary>¿Qué pasa si no puedo hacer las actividades en el momento?<span class="icon">+</span></summary>
-        <div class="faq-answer">No hay problema. Las actividades quedan disponibles para que puedas hacerlas cuando tengas tiempo y continuar con tu aprendizaje sin perder el ritmo.</div>
+        <summary>¿Puedo ver mi progreso?<span class="icon">+</span></summary>
+        <div class="faq-answer">Sí. Vas a poder seguir tu avance y consultar lo que ya trabajaste a lo largo del curso.</div>
       </details>
       <details class="faq-item">
         <summary>¿Tengo que hablar en inglés?<span class="icon">+</span></summary>
-        <div class="faq-answer">Sí. La práctica oral es fundamental, pero no necesitás hablar perfecto. Las clases están pensadas para que ganes confianza progresivamente.</div>
+        <div class="faq-answer">La práctica oral es fundamental, pero no necesitás hablar perfecto. Las clases están pensadas para que ganes confianza de manera progresiva y puedas comunicarte cada vez mejor.</div>
       </details>
       <details class="faq-item">
         <summary>¿Qué pasa si me cuesta hablar o tengo vergüenza?<span class="icon">+</span></summary>
-        <div class="faq-answer">No te preocupes. Trabajamos para superar bloqueos, perder el miedo a equivocarte y ganar seguridad al comunicarte.</div>
+        <div class="faq-answer">Es completamente normal. Vas a encontrar un espacio de práctica y acompañamiento donde podés equivocarte, aprender y ganar seguridad sin miedo a hacerlo mal.</div>
       </details>
       <details class="faq-item">
         <summary>¿Qué temas vamos a trabajar?<span class="icon">+</span></summary>
-        <div class="faq-answer">Cada mes trabajamos una unidad temática relacionada con situaciones reales y con los intereses del grupo.</div>
+        <div class="faq-answer">Los contenidos se trabajan a partir de situaciones reales y se adaptan al nivel, los intereses y los objetivos de cada grupo.</div>
       </details>
       <details class="faq-item">
-        <summary>¿Las clases sirven para el inglés laboral?<span class="icon">+</span></summary>
-        <div class="faq-answer">Sí. Podemos trabajar situaciones como entrevistas laborales, reuniones, trabajo remoto y comunicación profesional, según las necesidades del grupo.</div>
+        <summary>¿Puedo aprender inglés para el trabajo?<span class="icon">+</span></summary>
+        <div class="faq-answer">Sí. Podemos trabajar situaciones como entrevistas laborales, reuniones, presentaciones, trabajo remoto y comunicación profesional, según las necesidades y objetivos del grupo.</div>
       </details>
       <details class="faq-item">
-        <summary>¿Recibo material para practicar?<span class="icon">+</span></summary>
-        <div class="faq-answer">Sí. Vas a contar con material de apoyo, actividades y un grupo de práctica para continuar trabajando durante la semana.</div>
+        <summary>¿Cómo se abona el curso?<span class="icon">+</span></summary>
+        <div class="faq-answer">Cada curso tiene su propio valor, de acuerdo con la propuesta y modalidad de cursada. La cursada se abona mes a mes, para que puedas organizar tu inversión de manera simple y acompañar tu progreso.</div>
       </details>
       <details class="faq-item">
-        <summary>¿Cuánto cuesta?<span class="icon">+</span></summary>
-        <div class="faq-answer">El valor es de $110.000 mensuales, e incluye las 4 clases del mes.</div>
-      </details>
-      <details class="faq-item">
-        <summary>¿Cuánto cuesta la inscripción?<span class="icon">+</span></summary>
-        <div class="faq-answer">La inscripción es de $30.000 y podés abonarla en 2 cuotas.</div>
+        <summary>¿La inscripción se abona una sola vez?<span class="icon">+</span></summary>
+        <div class="faq-answer">Sí. La inscripción se abona por única vez y te permite acceder a la plataforma y a los recursos necesarios para realizar tu cursada.</div>
       </details>
       <details class="faq-item">
         <summary>¿Cuándo comienza el curso?<span class="icon">+</span></summary>
-        <div class="faq-answer">Los grupos se habilitan cuando alcanzan el mínimo de 4 alumnos. Consultame los horarios disponibles.</div>
+        <div class="faq-answer">Los grupos se habilitan al alcanzar el mínimo de alumnos. Consultanos los días y horarios disponibles para encontrar la opción que mejor se adapte a vos.</div>
       </details>
       <details class="faq-item">
         <summary>¿Cómo sé si este curso es para mí?<span class="icon">+</span></summary>
-        <div class="faq-answer">Si entendés inglés pero te cuesta hablar, querés ganar fluidez o necesitás comunicarte con más seguridad, este espacio puede ser para vos. 💬✨</div>
+        <div class="faq-answer">Si querés aprender inglés de una manera práctica, entender lo que estás haciendo, ganar confianza y avanzar a tu ritmo, este espacio puede ser para vos.</div>
       </details>
     </div>
   </div>
@@ -865,5 +952,23 @@
     <path d="M17.2 14.3c-.28-.14-1.65-.81-1.9-.9-.26-.1-.44-.14-.63.14-.19.28-.72.9-.88 1.08-.16.19-.32.21-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.5-.07-.14-.63-1.52-.87-2.08-.23-.55-.46-.47-.63-.48-.16-.01-.35-.01-.54-.01s-.5.07-.76.35c-.26.28-1 .98-1 2.38s1.02 2.76 1.16 2.95c.14.19 2.01 3.06 4.86 4.29.68.29 1.21.47 1.62.6.68.22 1.3.19 1.79.11.55-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.26-.19-.54-.33z" fill="#2E2313"/>
   </svg>
 </a>
+<script>
+  // Abre automáticamente el <details> correspondiente cuando se llega
+  // por un link interno (#path-..., #curso-..., #faq-...), y hace
+  // scroll hasta ahí una vez que ya está abierto.
+  function abrirDetalleDestino() {
+    var hash = window.location.hash;
+    if (!hash) return;
+    var el = document.querySelector(hash);
+    if (el && el.tagName === 'DETAILS') {
+      el.open = true;
+      setTimeout(function () {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    }
+  }
+  window.addEventListener('hashchange', abrirDetalleDestino);
+  window.addEventListener('DOMContentLoaded', abrirDetalleDestino);
+</script>
 </body>
 </html>
